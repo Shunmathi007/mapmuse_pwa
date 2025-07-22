@@ -1,0 +1,74 @@
+{
+  "Chill 🌿": {
+    "description": "You’re grounded, peaceful and in need of calm comfort.",
+    "icon": "🌿",
+    "cuisine_tags": ["tea", "organic", "vegetarian", "millet"],
+    "cues": ["relaxed", "calm", "peaceful", "content", "stillness", "cruising", "low energy", "indoor", "stay in bed", "comfort", "cloudy"],
+    "places": {
+      "Chennai": [{ "name": "Semmozhi Poonga", "lat": 13.0577, "lon": 80.2513 }],
+      "Madurai": [{ "name": "Gandhi Museum Garden", "lat": 9.9325, "lon": 78.1386 }],
+      "Coimbatore": [{ "name": "VOC Park", "lat": 11.0056, "lon": 76.9661 }],
+      "Tirunelveli": [{ "name": "Eco Park", "lat": 8.7139, "lon": 77.7567 }],
+      "Salem": [{ "name": "Kurumpapatty Zoo", "lat": 11.6643, "lon": 78.1460 }],
+      "Trichy": [{ "name": "Anna Science Park", "lat": 10.8155, "lon": 78.6926 }],
+      "Erode": [{ "name": "Riverfront Walkway", "lat": 11.3424, "lon": 77.7274 }],
+      "Tiruppur": [{ "name": "Botanical Garden", "lat": 11.1075, "lon": 77.3411 }],
+      "Thanjavur": [{ "name": "Sivaganga Park", "lat": 10.7867, "lon": 79.1378 }],
+      "Vellore": [{ "name": "Fort Moat Garden", "lat": 12.9216, "lon": 79.1332 }]
+    }
+  },
+  "Adventurous 🌍": {
+    "description": "You’re energized and ready to explore new flavors and places.",
+    "icon": "🌍",
+    "cuisine_tags": ["spicy", "fusion", "regional", "street_food", "chettinad"],
+    "cues": ["energized", "windy", "try something new", "explore", "adventure", "curious", "outdoor", "focused", "expansive", "excited"],
+    "places": {
+      "Chennai": [{ "name": "Broadway Street Food Walk", "lat": 13.0977, "lon": 80.2762 }],
+      "Madurai": [{ "name": "East Marret Street Eats", "lat": 9.9252, "lon": 78.1234 }],
+      "Coimbatore": [{ "name": "RS Puram Food Lane", "lat": 11.0176, "lon": 76.9558 }],
+      "Tirunelveli": [{ "name": "Market Street Snacks", "lat": 8.7131, "lon": 77.7574 }],
+      "Salem": [{ "name": "Five Roads Food Trail", "lat": 11.6643, "lon": 78.1460 }],
+      "Trichy": [{ "name": "Rockfort Bazaar", "lat": 10.8305, "lon": 78.7050 }],
+      "Erode": [{ "name": "Texvalley Food Court", "lat": 11.3424, "lon": 77.7274 }],
+      "Tiruppur": [{ "name": "Kumar Nagar Food Lane", "lat": 11.1075, "lon": 77.3411 }],
+      "Thanjavur": [{ "name": "Sathya Street Eats", "lat": 10.7867, "lon": 79.1378 }],
+      "Vellore": [{ "name": "Sathuvachari Biryani Hub", "lat": 12.9216, "lon": 79.1332 }]
+    }
+  },
+  "Social 🤝": {
+    "description": "You’re seeking connection, playfulness and group energy.",
+    "icon": "🤝",
+    "cuisine_tags": ["fast_food", "multi-cuisine", "barbecue", "tandoori"],
+    "cues": ["chatty", "lively", "belonging", "connection", "meet friends", "hang out", "savory", "scattered", "sunny", "talkative"],
+    "places": {
+      "Chennai": [{ "name": "Phoenix Mall Social", "lat": 13.0106, "lon": 80.2231 }],
+      "Madurai": [{ "name": "AR Bistro", "lat": 9.9301, "lon": 78.1154 }],
+      "Coimbatore": [{ "name": "Brookefields Food Court", "lat": 11.0176, "lon": 76.9558 }],
+      "Tirunelveli": [{ "name": "Open Mic Café", "lat": 8.7125, "lon": 77.7593 }],
+      "Salem": [{ "name": "Mall Lounge", "lat": 11.6643, "lon": 78.1460 }],
+      "Trichy": [{ "name": "Chat Street", "lat": 10.8155, "lon": 78.6926 }],
+      "Erode": [{ "name": "Hangout Hub", "lat": 11.3424, "lon": 77.7274 }],
+      "Tiruppur": [{ "name": "Friends Café", "lat": 11.1075, "lon": 77.3411 }],
+      "Thanjavur": [{ "name": "Temple Town Food Plaza", "lat": 10.7867, "lon": 79.1378 }],
+      "Vellore": [{ "name": "Darling Residency Lounge", "lat": 12.9216, "lon": 79.1332 }]
+    }
+  },
+  "Reflective 🍨": {
+    "description": "You’re mellow, quiet and might be craving something sweet or creative.",
+    "icon": "🍨",
+    "cuisine_tags": ["dessert", "ice_cream", "sweet", "bistro", "creative"],
+    "cues": ["drizzling", "indulgence", "creative", "sweetness", "foggy", "withdrawn", "low", "tired", "still", "vivid", "stay in", "sluggish"],
+    "places": {
+      "Chennai": [{ "name": "Amadora Ice Cream", "lat": 13.0572, "lon": 80.2542 }],
+      "Madurai": [{ "name": "Dessert Studio", "lat": 9.9283, "lon": 78.1234 }],
+      "Coimbatore": [{ "name": "Art Café", "lat": 11.0176, "lon": 76.9558 }],
+      "Tirunelveli": [{ "name": "Creative Corner", "lat": 8.7138, "lon": 77.7578 }],
+      "Salem": [{ "name": "Sweet Treats Lounge", "lat": 11.6643, "lon": 78.1460 }],
+      "Trichy": [{ "name": "Sketch Café", "lat": 10.8155, "lon": 78.6926 }],
+      "Erode": [{ "name": "Ice Cream Junction", "lat": 11.3424, "lon": 77.7274 }],
+      "Tiruppur": [{ "name": "Choco Bliss", "lat": 11.1075, "lon": 77.3411 }],
+      "Thanjavur": [{ "name": "Heritage Coffee Studio", "lat": 10.7867, "lon": 79.1378 }],
+      "Vellore": [{ "name": "Velvet Scoop", "lat": 12.9216, "lon": 79.1332 }]
+    }
+  }
+}
