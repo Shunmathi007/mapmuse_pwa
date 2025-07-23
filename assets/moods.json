@@ -1,4 +1,4 @@
-{{
+{
   "Chill 🌿": {
     "description": "You're feeling peaceful and drawn to slow, comforting experiences.",
     "icon": "🌿",
@@ -71,7 +71,8 @@
       "Vellore": [{ "name": "Sweet Spot", "lat": 12.9216, "lon": 79.1332 }]
     }
   }
-  {
+}
+  ,
   "Focused 🧠": {
     "description": "You're in deep work mode and seeking clarity or healthy fuel.",
     "icon": "🧠",
@@ -87,7 +88,7 @@
       "Thanjavur": [{ "name": "Productivity Perks", "lat": 10.7867, "lon": 79.1378 }],
       "Tirunelveli": [{ "name": "Zing Workspace", "lat": 8.7139, "lon": 77.7567 }],
       "Vellore": [{ "name": "Caffeine Corner", "lat": 12.9216, "lon": 79.1332 }],
-      "Tiruppur": [{ "name": "Bean Spark", "lat": 11.1075, "lon": 77.3411 }]
+      "Karaikkudi": [{ "name": "Quiet Study Nook", "lat": 10.0667, "lon": 78.7667 }]
     }
   },
   "Comfort-Seeking 🫧": {
@@ -105,7 +106,7 @@
       "Thanjavur": [{ "name": "Muthulakshmi’s Meals", "lat": 10.7867, "lon": 79.1378 }],
       "Tirunelveli": [{ "name": "Rice & Rasam Haven", "lat": 8.7139, "lon": 77.7567 }],
       "Vellore": [{ "name": "Thatha’s Mess", "lat": 12.9216, "lon": 79.1332 }],
-      "Tiruppur": [{ "name": "Tiffin Tap", "lat": 11.1075, "lon": 77.3411 }]
+      "Karaikkudi": [{ "name": "Chettinad Comfort Pot", "lat": 10.0667, "lon": 78.7667 }]
     }
   },
   "Romantic 💞": {
@@ -123,7 +124,7 @@
       "Thanjavur": [{ "name": "Hearts & Honey", "lat": 10.7867, "lon": 79.1378 }],
       "Tirunelveli": [{ "name": "Soft Whisper Café", "lat": 8.7139, "lon": 77.7567 }],
       "Vellore": [{ "name": "The Love Leaf", "lat": 12.9216, "lon": 79.1332 }],
-      "Tiruppur": [{ "name": "Serenade Bar", "lat": 11.1075, "lon": 77.3411 }]
+      "Karaikkudi": [{ "name": "Romance Retreat", "lat": 10.0667, "lon": 78.7667 }]
     }
   },
   "Celebratory 🎉": {
@@ -141,8 +142,7 @@
       "Thanjavur": [{ "name": "Feast & Fame", "lat": 10.7867, "lon": 79.1378 }],
       "Tirunelveli": [{ "name": "Spice Celebration", "lat": 8.7139, "lon": 77.7567 }],
       "Vellore": [{ "name": "Royal Treat Hall", "lat": 12.9216, "lon": 79.1332 }],
-      "Tiruppur": [{ "name": "Carnival Dining", "lat": 11.1075, "lon": 77.3411 }]
+      "Karaikkudi": [{ "name": "Carnival Dining", "lat": 10.0667, "lon": 78.7667 }]
     }
   }
-}
 }
