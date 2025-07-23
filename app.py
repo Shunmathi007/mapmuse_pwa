@@ -5,10 +5,10 @@ from streamlit_folium import st_folium
 import requests
 
 # Load mood data
-with open("assets/moods.json", "r", encoding="utf-8") as f:
+with open("moods.json", "r", encoding="utf-8") as f:
     mood_data = json.load(f)
 
-# Initialize session state
+# Session state init
 if "question_index" not in st.session_state:
     st.session_state.question_index = 0
 if "mood_answers" not in st.session_state:
@@ -18,27 +18,18 @@ if "user_details" not in st.session_state:
 if "mood" not in st.session_state:
     st.session_state.mood = None
 
-# Splash screen
 def splash_screen():
-    st.markdown("""
-    <div style='text-align:center;'>
-        <h1>🧭 MapMuse</h1>
-        <p style='font-size:18px;'>Let your feelings guide your food</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("## 🧭 MapMuse\nLet your feelings guide your food")
 
-# Get all cities
 def list_all_cities():
     cities = set()
     for mood in mood_data.values():
         cities.update(mood.get("places", {}).keys())
     return sorted(cities)
 
-# User form with reset logic
 def user_intro():
     name = st.text_input("Your name")
     city = st.selectbox("Select your city", list_all_cities())
-
     prev = st.session_state.user_details
     if name and city:
         if name != prev.get("name") or city != prev.get("city"):
@@ -49,27 +40,20 @@ def user_intro():
         return True
     return False
 
-# Mood quiz (one question at a time)
 def mood_quiz():
-    st.subheader("🧠 How are you feeling today?")
-
     questions = [
-        ("What's been weighing on your mind?", ["Deadlines", "Relationships", "Uncertainty", "Nothing much"]),
-        ("Which word resonates most?", ["Overwhelmed", "Curious", "Content", "Restless"]),
-        ("Your physical energy feels...", ["Tense", "Energized", "Relaxed", "Sluggish"]),
-        ("Given a day off, you'd rather...", ["Stay in bed", "Take a walk", "Meet friends", "Try something new"]),
-        ("Your mental clarity is...", ["Foggy", "Focused", "Distracted", "Inspired"]),
-        ("Socially, you're feeling...", ["Withdrawn", "Exploratory", "Chatty", "Creative"]),
-        ("You crave...", ["Comfort", "Excitement", "Belonging", "Sweetness"]),
-        ("Your thoughts are...", ["Heavy", "Expansive", "Scattered", "Vivid"]),
-        ("If emotions were weather...", ["Cloudy", "Windy", "Sunny", "Drizzling"]),
-        ("You secretly wish for...", ["Stillness", "Adventure", "Connection", "Indulgence"])
+        ("How does your energy feel today?", ["Relaxed", "Energized", "Sluggish", "Restless"]),
+        ("Which emotion fits your vibe?", ["Content", "Curious", "Tired", "Playful"]),
+        ("What are you craving?", ["Comfort", "Spice", "Sweetness", "Excitement"]),
+        ("Your ideal company right now is...", ["Alone", "Friends", "Partner", "Crowd"]),
+        ("What's your mental clarity like?", ["Foggy", "Focused", "Inspired", "Scattered"]),
+        ("What's your weather mood?", ["Cloudy", "Sunny", "Windy", "Drizzling"])
     ]
 
     q_index = st.session_state.question_index
     if q_index < len(questions):
         q_text, options = questions[q_index]
-        st.markdown(f"**Q{q_index+1}: {q_text}**")
+        st.markdown(f"*Q{q_index+1}: {q_text}*")
         answer = st.radio("Choose one:", options, key=q_index)
         if st.button("Next"):
             st.session_state.mood_answers.append(answer)
@@ -81,29 +65,30 @@ def mood_quiz():
         show_map(mood)
         show_restaurants(mood)
 
-# Classify mood
 def classify_mood(answers):
     score = {mood: 0 for mood in mood_data.keys()}
     for answer in answers:
+        answer = answer.lower().strip()
         for mood, info in mood_data.items():
-            if answer.lower() in " ".join(info.get("cues", [])).lower():
-                score[mood] += 1
+            cues = [c.lower() for c in info.get("cues", [])]
+            for cue in cues:
+                if answer == cue:
+                    score[mood] += 1
+                elif answer in cue or cue in answer:
+                    score[mood] += 0.5
     return max(score, key=score.get)
 
-# Personalized mood summary
 def show_mood_result(mood):
     info = mood_data[mood]
     name = st.session_state.user_details["name"]
     city = st.session_state.user_details["city"]
     cuisine = ", ".join(info.get("cuisine_tags", [])[:2])
-    spot = info.get("places", {}).get(city, [{}])[0].get("name", "a vibe-friendly place")
-
+    spot = info.get("places", {}).get(city, [{}])[0].get("name", "a cozy spot")
     st.markdown(f"### 👋 Hi {name}!")
-    st.markdown(f"You're feeling **{mood}** {info['icon']} and seem to be craving `{cuisine}`.")
-    st.markdown(f"In **{city}**, here's a place that matches your mood: 🗺️ **{spot}**")
+    st.markdown(f"You’re feeling *{mood}* {info['icon']} and might be craving {cuisine}.")
+    st.markdown(f"In *{city}, you should check out 🗺 **{spot}*")
     st.markdown("---")
 
-# Map rendering
 def show_map(mood):
     city = st.session_state.user_details["city"]
     places = mood_data[mood].get("places", {}).get(city, [])
@@ -114,13 +99,11 @@ def show_map(mood):
         st.subheader("📍 Vibe-Matched Spot")
         st_folium(folium_map, width=700)
     else:
-        st.info("No curated places found for your mood in this city.")
+        st.info("No curated places found for this mood.")
 
-# Restaurant results from Overpass
 def show_restaurants(mood):
     city = st.session_state.user_details["city"]
     tags = mood_data[mood].get("cuisine_tags", [])
-
     query = f"""
     [out:json][timeout:25];
     area["name"="{city}"]->.searchArea;
@@ -136,7 +119,7 @@ def show_restaurants(mood):
         return
 
     elements = response.json().get("elements", [])
-    matches, fallback = [], []
+    matches = []
     for el in elements:
         tags_dict = el.get("tags", {})
         name = tags_dict.get("name", "")
@@ -145,26 +128,17 @@ def show_restaurants(mood):
         lon = el.get("lon") or el.get("center", {}).get("lon")
         if not name or not lat or not lon:
             continue
-        rating = (len(name) % 5) + 1
-        if any(tag in cuisine.lower() for tag in tags) or any(tag in name.lower() for tag in tags):
-            matches.append((name, cuisine, lat, lon, rating))
-        elif any(k in cuisine.lower() for k in ["biryani", "chettinad", "veg", "south_indian"]):
-            fallback.append((name, cuisine, lat, lon, rating))
-
+        if any(tag in cuisine.lower() for tag in tags):
+            matches.append((name, cuisine, lat, lon))
+    st.subheader("🍛 Recommended Restaurants")
     if matches:
-        st.subheader("🍛 Mood-Matched Restaurants")
-        for name, cuisine, lat, lon, rating in sorted(matches, key=lambda x: x[4], reverse=True)[:10]:
+        for name, cuisine, lat, lon in matches[:5]:
             link = f"https://www.openstreetmap.org/?mlat={lat}&mlon={lon}"
-            st.markdown(f"- **{name}** ({cuisine}) — {rating}⭐ → [View ↗]({link})")
-    elif fallback:
-        st.warning("No exact mood match. Here are popular alternatives:")
-        for name, cuisine, lat, lon, rating in fallback[:5]:
-            link = f"https://www.openstreetmap.org/?mlat={lat}&mlon={lon}"
-            st.markdown(f"- **{name}** ({cuisine}) — {rating}⭐ → [View ↗]({link})")
+            st.markdown(f"- *{name}* ({cuisine}) → [View ↗]({link})")
     else:
-        st.info("No restaurants found nearby. Try changing city or mood.")
+        st.info("No matching restaurants found. Try exploring nearby hotspots!")
 
-# Run the app
+# App Runner
 splash_screen()
 if user_intro():
     mood_quiz()
