@@ -5,7 +5,7 @@ from streamlit_folium import st_folium
 import requests
 
 # Load mood data
-with open("moods.json", "r", encoding="utf-8") as f:
+with open("assets/moods.json", "r", encoding="utf-8") as f:
     mood_data = json.load(f)
 
 # Session state init
